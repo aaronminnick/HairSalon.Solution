@@ -59,12 +59,16 @@ namespace Salon.Controllers
 
     public ActionResult Delete(int id)
     {
-      return View();
+      Client model = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      return View(model);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
+      Client client = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      _db.Clients.Remove(client);
+      _db.SaveChanges();
       return RedirectToAction("Details", "Stylists");
     }
   }
