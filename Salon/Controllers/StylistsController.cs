@@ -43,12 +43,15 @@ namespace Salon.Controllers
 
     public ActionResult Edit(int id)
     {
-      return View();
+      Stylist model = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      return View(model);
     }
 
     [HttpPost]
     public ActionResult Edit(Stylist stylist)
     {
+      _db.Entry(stylist).State = EntityState.Modified;
+      _db.SaveChanges();
       return RedirectToAction("Details");
     }
 

@@ -32,23 +32,29 @@ namespace Salon.Controllers
     [HttpPost]
     public ActionResult Create(Client client)
     {
-      return RedirectToAction("Details", "Stylists");
+      _db.Clients.Add(client);
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Stylists", new {id = client.StylistId});
     }
 
     public ActionResult Details(int id)
     {
-      return View();
+      Client model = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      return View(model);
     }
 
     public ActionResult Edit(int id)
     {
-      return View();
+      Client model = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      return View(model);
     }
 
     [HttpPost]
     public ActionResult Edit(Client client)
     {
-      return RedirectToAction("Details", "Stylists");
+      _db.Entry(client).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Details", "Stylists", new {id = client.StylistId});
     }
 
     public ActionResult Delete(int id)
