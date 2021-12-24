@@ -9,10 +9,17 @@ namespace Salon.Controllers
   
   public class ClientsController : Controller
   {
+    private readonly SalonContext _db;
+
+    public ClientsController(SalonContext db)
+    {
+      _db = db;
+    }
 
     public ActionResult Index()
     {
-      return View();
+      List<Client> model = _db.Clients.ToList();
+      return View(model);
     }
 
     public ActionResult Create()
