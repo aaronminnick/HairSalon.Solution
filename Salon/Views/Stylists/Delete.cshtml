@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Salon.Models;
+
+<h4>In order to delete the record for @Model.FirstName, please reassign or delete @Model.FirstName's clients:</h4>
+@using (Html.BeginForm())
+{
+  @foreach (Client client in Model.Clients)
+  {
+    <label>Reassign:</label>
+    <select>
+      @* get list of stylists somehow *@
+    </select>
+    <label>Or Delete:</label> //better to do Delete as default option in select?
+    <input type="checkbox">
+      @* need to use string interpolation to give unique ids to these html elements. How to get values on c# side in controller? *@
+  }
+
+  <input type="submit" value="Delete Stylist and Save Changes" />
+}
