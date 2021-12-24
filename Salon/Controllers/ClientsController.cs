@@ -22,8 +22,10 @@ namespace Salon.Controllers
       return View(model);
     }
 
-    public ActionResult Create()
+    public ActionResult Create(int stylistId, string stylistName)
     {
+      ViewBag.StylistId = stylistId;
+      ViewBag.StylistName = stylistName;
       return View();
     }
 

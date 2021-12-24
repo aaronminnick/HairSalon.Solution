@@ -30,12 +30,15 @@ namespace Salon.Controllers
     [HttpPost]
     public ActionResult Create(Stylist stylist)
     {
-      return RedirectToAction("Details");
+      _db.Stylists.Add(stylist);
+      _db.SaveChanges();
+      return RedirectToAction("Details", new {id = stylist.StylistId});
     }
 
     public ActionResult Details(int id)
     {
-      return View();
+      Stylist model = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      return View(model);
     }
 
     public ActionResult Edit(int id)
