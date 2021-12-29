@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+
+<h2>Client Details:</h2>
+
+<h4>@Model.FirstName @Model.LastName</h4>
+<h4>Phone Number: @Model.PhoneNumber</h4>
+<h4>Stylist: @Html.ActionLink($"{ViewBag.Stylist.FirstName} {ViewBag.Stylist.LastName}", "Details", "Stylists", new {id = ViewBag.Stylist.StylistId})</h4>
+<p>@Html.ActionLink("Edit Client", "Edit", new {id = Model.ClientId})</p>
