@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HairSalon.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace HairSalon.Controllers
 {
@@ -65,8 +67,27 @@ namespace HairSalon.Controllers
     }
 
     [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id) //need to also receive reassigns for any clients
+    public ActionResult DeleteConfirmed(IFormCollection reassigns) 
     {
+      foreach (string key in reassigns.Keys)
+      {
+        if (key != "id" && key != "__RequestVerificationToken")
+        {
+          Client client = _db.Clients.FirstOrDefault(client => client.ClientId == int.Parse(key));
+          if (reassigns[key] == "0")
+          {
+            _db.Clients.Remove(client);
+          }
+          else
+          {
+          client.StylistId = int.Parse(reassigns[key]);
+          _db.Entry(client).State = EntityState.Modified;
+          }
+        }
+      }
+      Stylist stylist = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == int.Parse(reassigns["id"]));
+      _db.Stylists.Remove(stylist);
+      _db.SaveChanges();
       return RedirectToAction("Index");
     }
   }

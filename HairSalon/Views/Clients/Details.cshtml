@@ -10,3 +10,4 @@
 <h4>Phone Number: @Model.PhoneNumber</h4>
 <h4>Stylist: @Html.ActionLink($"{ViewBag.Stylist.FirstName} {ViewBag.Stylist.LastName}", "Details", "Stylists", new {id = ViewBag.Stylist.StylistId})</h4>
 <p>@Html.ActionLink("Edit Client", "Edit", new {id = Model.ClientId})</p>
+<p>@Html.ActionLink("Delete Client", "Delete", new {id = Model.ClientId})</p>

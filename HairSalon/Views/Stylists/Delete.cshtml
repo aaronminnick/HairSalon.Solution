@@ -7,19 +7,18 @@
 <h4>In order to delete the record for @Model.FirstName, please reassign or delete @Model.FirstName's clients:</h4>
 @using (Html.BeginForm())
 {
+  <input name="id" value="@Model.StylistId" hidden>
   @foreach (Client client in Model.Clients)
   {
-    <label>Reassign or delete @client.FirstName @client.LastName:</label>
-    <select>
-      @* get list of stylists somehow *@
-      <option>Delete</option>
+    <label>@client.FirstName @client.LastName:</label>
+    <select name="@client.ClientId">
+      <option value="0">Delete</option>
       @foreach (Stylist stylist in ViewBag.Stylists)
       {
-        <option>@stylist.FirstName @stylist.LastName</option>
+        <option value="@stylist.StylistId">Reassign to @stylist.FirstName @stylist.LastName</option>
       }
     </select>
-      @* need to use string interpolation to give unique ids to these html elements. How to get values on c# side in controller? *@
+    <br>
   }
-
   <input type="submit" value="Delete Stylist and Save Changes" />
 }
