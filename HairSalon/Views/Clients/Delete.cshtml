@@ -1,0 +1,9 @@
+@{
+  Layout = "_Layout";
+}
+
+<h4>Are you sure you want to delete the record for @Model.FirstName?</h4>
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Yes, Delete Client" />
+}
