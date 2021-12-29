@@ -9,12 +9,15 @@
 {
   @foreach (Client client in Model.Clients)
   {
-    <label>Reassign:</label>
+    <label>Reassign or delete @client.FirstName @client.LastName:</label>
     <select>
       @* get list of stylists somehow *@
+      <option>Delete</option>
+      @foreach (Stylist stylist in ViewBag.Stylists)
+      {
+        <option>@stylist.FirstName @stylist.LastName</option>
+      }
     </select>
-    <label>Or Delete:</label> //better to do Delete as default option in select?
-    <input type="checkbox">
       @* need to use string interpolation to give unique ids to these html elements. How to get values on c# side in controller? *@
   }
 

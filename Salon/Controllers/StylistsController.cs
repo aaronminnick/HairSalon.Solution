@@ -57,7 +57,11 @@ namespace Salon.Controllers
 
     public ActionResult Delete(int id)
     {
-      return View();
+      Stylist model = _db.Stylists.FirstOrDefault(stylist => stylist.StylistId == id);
+      List<Stylist> stylists = _db.Stylists.ToList();
+      stylists.Remove(model);
+      ViewBag.Stylists = stylists;
+      return View(model);
     }
 
     [HttpPost, ActionName("Delete")]
