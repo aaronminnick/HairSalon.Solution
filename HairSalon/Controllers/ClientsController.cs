@@ -52,7 +52,7 @@ namespace HairSalon.Controllers
       List<Stylist> stylists = _db.Stylists.ToList();
       stylists.Remove(current);
       stylists.Insert(0, current);
-      ViewBag.Stylists = new SelectList(stylists, "StylistId", "FirstName");
+      ViewBag.StylistId = new SelectList(stylists, "StylistId", "FullName");
       return View(model);
     }
 
