@@ -8,12 +8,13 @@
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.ClientId)
-  @Html.HiddenFor(model => model.StylistId)
   @Html.LabelFor(model => model.FirstName, "First Name")
   @Html.EditorFor(model => model.FirstName)
   @Html.LabelFor(model => model.LastName, "Last Name")
   @Html.EditorFor(model => model.LastName)
   @Html.LabelFor(model => model.PhoneNumber, "Phone Number: ###-###-####")
   @Html.EditorFor(model => model.PhoneNumber, new {@type = "tel", @pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}"})
+  @Html.LabelFor(model => model.StylistId, "Reassign to Stylist:")
+  @Html.DropDownList("Stylists")
   <input class="submit-button" type="submit" value="Save Changes" />
 }
