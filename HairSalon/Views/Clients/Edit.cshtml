@@ -15,5 +15,5 @@
   @Html.EditorFor(model => model.LastName)
   @Html.LabelFor(model => model.PhoneNumber, "Phone Number: ###-###-####")
   @Html.EditorFor(model => model.PhoneNumber, new {@type = "tel", @pattern = "[0-9]{3}-[0-9]{3}-[0-9]{4}"})
-  <input type="submit" value="Save Changes" />
+  <input class="submit-button" type="submit" value="Save Changes" />
 }

@@ -1,0 +1,51 @@
+body {
+  background-color: beige;
+}
+
+.container {
+  background-color: burlywood;
+  margin-top: 10vh;
+}
+
+h2, h4 {
+  color: brown;
+  font-weight: bold;
+}
+
+h5 {
+  margin-top: .5em;
+}
+
+a, .submit-button {
+  background-color: beige;
+  color: saddlebrown;
+  border: 1px brown solid;
+  border-radius: .5em;
+  padding: .2em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+label {
+  color: brown;
+  font-weight: bold;
+  margin-left: .5em;
+  margin-right: .5em;
+}
+
+#bottom-links {
+  border-top: 2px brown dotted;
+  padding: 1em 3em 1em;
+}
+
+.list-div {
+  width: 80%;
+}
+
+.list-div a {
+  border: 1px solid blanchedalmond;
+  border-radius: .3em;
+  width: 100%;
+  display: block;
+  margin: 1em 3em 1em;
+}

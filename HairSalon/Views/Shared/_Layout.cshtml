@@ -9,8 +9,10 @@
 <body>
   <div class="container">
     @RenderBody()
-    <p>@Html.ActionLink("View All Stylists", "Index", "Stylists")</p>
-    <p>@Html.ActionLink("View All Clients", "Index", "Clients")</p>
+    <div id="bottom-links">
+      @Html.ActionLink("View All Stylists", "Index", "Stylists")
+      @Html.ActionLink("View All Clients", "Index", "Clients")
+    </div>
   </div>
 </body>
 </html>

@@ -7,19 +7,21 @@
 <h2>Stylist Details:</h2>
 
 <h4>@Model.FirstName @Model.LastName</h4>
-<p>@Html.ActionLink("Edit Stylist", "Edit", new {id = Model.StylistId})</p>
-<p>@Html.ActionLink("Delete Stylist", "Delete", new {id = Model.StylistId})</p>
+@Html.ActionLink("Edit Stylist", "Edit", new {id = Model.StylistId})
+@Html.ActionLink("Delete Stylist", "Delete", new {id = Model.StylistId})
 
 <h5>@Model.FirstName's Clients:</h5>
-@if (Model.Clients.Count == 0)
-{
-  <p>Stylist has no clients. Please use the link below to add a client.</p>
-}
-else
-{
-  foreach (Client client in Model.Clients)
+<div class="list-div">
+  @if (Model.Clients.Count == 0)
   {
-    <p>@Html.ActionLink($"{client.FirstName} {client.LastName}", "Details", "Clients", new {id = client.ClientId})</p>
+    <p>Stylist has no clients. Please use the link below to add a client.</p>
   }
-}
+  else
+  {
+    foreach (Client client in Model.Clients)
+    {
+      @Html.ActionLink($"{client.FirstName} {client.LastName}", "Details", "Clients", new {id = client.ClientId})
+    }
+  }
+</div>
 <p>@Html.ActionLink($"Add a Client for {Model.FirstName}", "Create", "Clients", new {stylistId = Model.StylistId, stylistName = Model.FirstName})</p>

@@ -15,7 +15,7 @@ else
 {
   foreach (Stylist stylist in Model)
   {
-    <p>@Html.ActionLink($"{stylist.FirstName} {stylist.LastName}", "Details", new {id = stylist.StylistId})</p>
+    @Html.ActionLink($"{stylist.FirstName} {stylist.LastName}", "Details", new {id = stylist.StylistId})
   }
 }
 </div>
